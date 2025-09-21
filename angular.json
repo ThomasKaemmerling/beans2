@@ -21,7 +21,10 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "outputPath": "dist/test-azheracles",
+            "outputPath": {
+            "base": "dist/test-azheracles",
+            "browser": ""
+          },
             "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
