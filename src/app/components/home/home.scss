@@ -1,0 +1,57 @@
+.home-container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('/assets/images/add_beans.jpg') center/cover;
+  background-color: #8b4513;
+  z-index: 1;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 20px;
+  margin-top: 25px;
+}
+
+.bean-counter {
+  color: #f0dcbe;
+}
+
+.counter-text {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  white-space: pre-line;
+  line-height: 1.2;
+}
+
+.counter-number {
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.add-bean-fab {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  z-index: 3;
+  background-color: #f0dcbe !important;
+  color: #8b4513 !important;
+}
+
+.add-bean-fab:hover {
+  background-color: #e6d1ab !important;
+}

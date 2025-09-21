@@ -1,0 +1,30 @@
+<h1 mat-dialog-title>{{ localization.translate('beanFor') }}</h1>
+
+<div mat-dialog-content>
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>{{ localization.translate('Datum') }}</mat-label>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate">
+    <mat-hint>{{ localization.translate('Datum') }}</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>{{ localization.translate('beanFor') }}</mat-label>
+    <textarea 
+      matInput 
+      [(ngModel)]="beanText" 
+      rows="5" 
+      placeholder="{{ localization.translate('beanFor') }}">
+    </textarea>
+  </mat-form-field>
+</div>
+
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">
+    {{ localization.translate('cancel') || 'Cancel' }}
+  </button>
+  <button mat-button color="primary" (click)="onSave()" [disabled]="!beanText.trim()">
+    {{ localization.translate('save') || 'Save' }}
+  </button>
+</div>

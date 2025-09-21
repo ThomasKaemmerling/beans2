@@ -1,0 +1,49 @@
+<div class="developer-page">
+  <mat-card class="profile-card">
+    <img mat-card-image src="assets/images/me.jpg" alt="Profile" />
+    <mat-card-content>
+      <h2>{{ localization.translate('developtBy') }}</h2>
+      <p class="profile-text">{{ localization.translate('profileMe') }}</p>
+      <div class="credits">
+        <div class="credit-row">
+          <mat-icon>computer</mat-icon>
+          <span>{{ localization.translate('conzeptAndProgramming') }}</span>
+        </div>
+        <div class="credit-row">
+          <mat-icon>palette</mat-icon>
+          <span>{{ localization.translate('design') }} – {{ localization.getCurrentLanguage() === 'de' ? 'Frau Kattler' : 'Ms. Kattler' }}</span>
+        </div>
+        <div class="credit-row">
+          <mat-icon>public</mat-icon>
+          <span>{{ localization.translate('web') }}</span>
+        </div>
+        <div class="credit-row">
+          <mat-icon>email</mat-icon>
+          <span>{{ localization.translate('email') }}</span>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="designer-card">
+    <img mat-card-image src="assets/images/conzept4you_todo.jpg" alt="Design by Ms. Kattler" />
+    <mat-card-content>
+      <h3>
+        <mat-icon>palette</mat-icon>
+        <span>{{ localization.translate('design') }} – {{ localization.getCurrentLanguage() === 'de' ? 'Frau Kattler' : 'Ms. Kattler' }}</span>
+      </h3>
+      <p class="designer-note">
+        {{ localization.getCurrentLanguage() === 'de' 
+          ? 'Design und visuelles Konzept von Ms. Kattler.' 
+          : 'Design and visual concept by Ms. Kattler.' }}
+      </p>
+    </mat-card-content>
+  </mat-card>
+
+  <div class="gallery">
+    <img src="assets/images/showcase_smile.jpg" alt="Showcase" />
+    <img src="assets/images/add_beans.jpg" alt="Add Beans" />
+    <img src="assets/images/header_menu.jpg" alt="Menu" />
+    <img src="assets/images/conzept4you_Logo.jpg" alt="Logo" />
+  </div>
+</div>

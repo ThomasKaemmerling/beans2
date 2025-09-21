@@ -1,0 +1,56 @@
+.statistics-container {
+  padding: 16px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.statistics-container h2 {
+  color: #8b4513;
+  margin-bottom: 24px;
+}
+
+.chart-card {
+  margin-bottom: 24px;
+}
+
+.chart-card mat-card-title {
+  color: #8b4513;
+}
+
+.simple-chart {
+  display: flex;
+  align-items: end;
+  gap: 8px;
+  height: 200px;
+  padding: 16px;
+  overflow-x: auto;
+}
+
+.chart-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 60px;
+}
+
+.bar {
+  background: #8b4513;
+  width: 30px;
+  min-height: 2px;
+  border-radius: 2px 2px 0 0;
+  margin-bottom: 8px;
+}
+
+.label {
+  font-size: 10px;
+  color: #666;
+  text-align: center;
+  transform: rotate(-45deg);
+  margin-bottom: 4px;
+}
+
+.value {
+  font-size: 12px;
+  font-weight: bold;
+  color: #8b4513;
+}
