@@ -44,4 +44,3 @@ jobs:
           app_location: "./"                # Angular project root
           output_location: "dist/beans-pwa" # Angular build output folder
           api_location: ""                  # leave empty if no API
-
