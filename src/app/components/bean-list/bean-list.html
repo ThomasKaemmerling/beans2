@@ -1,0 +1,37 @@
+<div class="bean-list-container">
+  <div class="filter-section">
+    <div class="date-filters">
+      <mat-form-field appearance="outline">
+        <mat-label>{{ localization.translate('von') }}</mat-label>
+        <input matInput [matDatepicker]="startPicker" [(ngModel)]="startDate" (dateChange)="filterBeans()">
+        <mat-datepicker-toggle matIconSuffix [for]="startPicker"></mat-datepicker-toggle>
+        <mat-datepicker #startPicker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ localization.translate('bis') }}</mat-label>
+        <input matInput [matDatepicker]="endPicker" [(ngModel)]="endDate" (dateChange)="filterBeans()">
+        <mat-datepicker-toggle matIconSuffix [for]="endPicker"></mat-datepicker-toggle>
+        <mat-datepicker #endPicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="beans-list">
+    <mat-card *ngFor="let bean of filteredBeans" class="bean-card">
+      <mat-card-header>
+        <mat-card-title>{{ formatDate(bean.date) }}</mat-card-title>
+        <button mat-icon-button (click)="deleteBean(bean.id!)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{ bean.text }}</p>
+      </mat-card-content>
+    </mat-card>
+
+    <div *ngIf="filteredBeans.length === 0" class="no-beans">
+      <p>{{ localization.translate('noBeans') || 'No beans found for this period.' }}</p>
+    </div>
+  </div>
+</div>

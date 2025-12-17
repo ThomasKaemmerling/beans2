@@ -1,0 +1,60 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport mode="over">
+    <mat-toolbar class="sidenav-header">
+  <img src="assets/images/header_menu.jpg" alt="Header" class="header-image">
+    </mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item (click)="navigateTo('home'); drawer.close()">
+        <mat-icon>home</mat-icon>
+        <span>{{ localization.translate('collectBeans') }}</span>
+      </a>
+      <a mat-list-item (click)="navigateTo('beans'); drawer.close()">
+        <mat-icon>list</mat-icon>
+        <span>{{ localization.translate('beansList') }}</span>
+      </a>
+      <a mat-list-item (click)="navigateTo('statistics'); drawer.close()">
+        <mat-icon>show_chart</mat-icon>
+        <span>{{ localization.translate('beansStatistics') }}</span>
+      </a>
+      <a mat-list-item (click)="navigateTo('tasks'); drawer.close()">
+        <mat-icon>timer</mat-icon>
+        <span>{{ localization.translate('fiveMinuteTasks') }}</span>
+      </a>
+  <a mat-list-item (click)="navigateTo('about'); drawer.close()">
+        <mat-icon>help</mat-icon>
+        <span>{{ localization.translate('aboutThisApp') }}</span>
+      </a>
+  <a mat-list-item (click)="navigateTo('developer'); drawer.close()">
+        <mat-icon>developer_board</mat-icon>
+        <span>{{ localization.translate('developer') }}</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="toolbar">
+      <button type="button" mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>{{ localization.translate('collectBeans') }}</span>
+      <span class="spacer"></span>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item *ngIf="showInstallButton" (click)="installApp()">
+          <mat-icon>download</mat-icon>
+          <span>Install App</span>
+        </button>
+        <button mat-menu-item (click)="toggleLanguage()">
+          <mat-icon>language</mat-icon>
+          <span>{{ localization.getCurrentLanguage() === 'en' ? 'Deutsch' : 'English' }}</span>
+        </button>
+      </mat-menu>
+    </mat-toolbar>
+
+    <main class="main-content">
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>

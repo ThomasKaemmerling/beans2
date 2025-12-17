@@ -1,0 +1,17 @@
+<div class="home-container">
+  <div class="background-image"></div>
+  <div class="content">
+    <div class="bean-counter">
+      <p class="counter-text">{{ localization.translate('todayCollectedBeans') }}</p>
+      <div class="counter-number">{{ todayBeansCount }}</div>
+    </div>
+  </div>
+  
+  <button 
+    mat-fab 
+    class="add-bean-fab" 
+    (click)="openAddBeanDialog()"
+    [attr.aria-label]="localization.translate('addBean')">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>

@@ -1,0 +1,119 @@
+<div class="tasks-container">
+  <div class="header-section">
+    <h1>{{ localization.translate('fiveMinuteTasks') }}</h1>
+    <p class="subtitle">{{ localization.translate('taskDescription') }}</p>
+    <div class="beans-earned">
+      <mat-icon>eco</mat-icon>
+      <span>{{ localization.translate('beansEarned') }}: {{ beansEarned }}</span>
+    </div>
+  </div>
+
+  <!-- Timer Section -->
+  <mat-card class="timer-card" *ngIf="currentTask">
+    <mat-card-header>
+      <mat-card-title>{{ localization.translate('currentTask') }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p class="current-task-text">{{ currentTask.text }}</p>
+      <div class="timer-display" [class.warning]="timeRemaining < 60">
+        {{ formattedTime }}
+      </div>
+      <div class="timer-actions">
+        <button mat-raised-button color="primary" (click)="completeTask()">
+          <mat-icon>check</mat-icon>
+          {{ localization.translate('complete') }}
+        </button>
+        <button mat-raised-button color="warn" (click)="cancelTask()">
+          <mat-icon>close</mat-icon>
+          {{ localization.translate('cancel') }}
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Add New Task Section -->
+  <mat-card class="add-task-card" *ngIf="!currentTask">
+    <mat-card-header>
+      <mat-card-title>{{ localization.translate('addNewTask') }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="add-task-form">
+        <input 
+          #taskInput 
+          type="text" 
+          [placeholder]="localization.translate('taskPlaceholder')"
+          (keyup.enter)="addTask(taskInput.value); taskInput.value = ''"
+          class="task-input">
+        <button 
+          mat-raised-button 
+          color="primary" 
+          (click)="addTask(taskInput.value); taskInput.value = ''">
+          <mat-icon>add</mat-icon>
+          {{ localization.translate('add') }}
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Incomplete Tasks List -->
+  <div class="tasks-section" *ngIf="incompleteTasks.length > 0">
+    <h2>{{ localization.translate('pendingTasks') }}</h2>
+    <mat-card *ngFor="let task of incompleteTasks" class="task-card">
+      <div class="task-content">
+        <mat-checkbox 
+          [(ngModel)]="task.completed"
+          (change)="toggleTaskCompletion(task)"
+          [disabled]="timerRunning">
+        </mat-checkbox>
+        <span class="task-text">{{ task.text }}</span>
+      </div>
+      <div class="task-actions">
+        <button 
+          mat-icon-button 
+          color="primary" 
+          (click)="startTask(task)"
+          [disabled]="timerRunning"
+          [attr.aria-label]="localization.translate('startTask')">
+          <mat-icon>play_arrow</mat-icon>
+        </button>
+        <button 
+          mat-icon-button 
+          color="warn" 
+          (click)="deleteTask(task)"
+          [disabled]="timerRunning"
+          [attr.aria-label]="localization.translate('deleteTask')">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </mat-card>
+  </div>
+
+  <!-- Completed Tasks List -->
+  <div class="tasks-section" *ngIf="completedTasks.length > 0">
+    <h2>{{ localization.translate('completedTasks') }}</h2>
+    <mat-card *ngFor="let task of completedTasks" class="task-card completed">
+      <div class="task-content">
+        <mat-checkbox 
+          [(ngModel)]="task.completed"
+          (change)="toggleTaskCompletion(task)">
+        </mat-checkbox>
+        <span class="task-text">{{ task.text }}</span>
+      </div>
+      <div class="task-actions">
+        <button 
+          mat-icon-button 
+          color="warn" 
+          (click)="deleteTask(task)"
+          [attr.aria-label]="localization.translate('deleteTask')">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </mat-card>
+  </div>
+
+  <!-- Empty State -->
+  <div class="empty-state" *ngIf="tasks.length === 0 && !currentTask">
+    <mat-icon>task_alt</mat-icon>
+    <p>{{ localization.translate('noTasksYet') }}</p>
+  </div>
+</div>
