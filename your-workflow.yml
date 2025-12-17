@@ -1,0 +1,9 @@
+name: Manual Trigger Example
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to run'
+        required: true
+        default: 'staging'
